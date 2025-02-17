@@ -1,5 +1,5 @@
 "use client"
-import { Map, Marker, Annotation } from "mapkit-react";
+import { Map, Annotation } from "mapkit-react";
 import { VscLocation } from "react-icons/vsc";
 
 export default function MapCard() {
