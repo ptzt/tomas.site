@@ -25,7 +25,7 @@ export default function LeetCodeCard() {
   }, []);
 
   return (
-    <div>
+    <div className="text-black">
       <h2 className="font-semibold">Leetcode</h2>
       {isLoading ? (
         <div className="flex justify-center items-center py-4">
