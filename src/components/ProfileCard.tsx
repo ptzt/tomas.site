@@ -2,9 +2,9 @@ import Image from "next/image";
 import imageExample from "../../public/exampleImage.jpeg";
 import { VscTwitter, VscCopy } from "react-icons/vsc";
 
-export function ProfileCard() {
+export default function ProfileCard() {
   return (
-    <div className="bg-slate-50 text-slate-950 p-6 h-screen mx-auto rounded-lg shadow-md">
+    <div className="p-4 bg-slate-50 text-slate-950 h-full  shadow-md">
       {/* Header */}
       <header className="flex justify-between items-center text-xl mb-4">
         <h2 className="font-semibold">About me</h2>

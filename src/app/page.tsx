@@ -1,15 +1,21 @@
-import { ProfileCard } from "@/components/ProfileCard";
+import ProfileCard from "@/components/ProfileCard";
+import GithubCard from "@/components/GithubCard";
 
 export default function Home() {
   return (
-    <div className="items-center justify-items-center font-[family-name:var(--font-geist-sans)]">
-      <div className="flex flex-col gap-4 sm:grid sm:grid-cols-5 sm:grid-rows-5">
-        <div className="sm:col-span-2 sm:row-span-5">
+    <div className="min-h-screen flex items-center justify-center font-[family-name:var(--font-geist-sans)] px-4 py-4">
+      <div className="flex flex-col gap-4 w-full sm:grid sm:grid-rows-3 sm:grid-flow-col">
+        <div className="p-4 w-full bg-slate-100 rounded-xl sm:row-span-3">
           <ProfileCard />
         </div>
-        <div className="sm:row-span-2 sm:col-start-3">2</div>
-        <div className="sm:col-span-3 sm:row-span-3 sm:col-start-3 sm:row-start-3">3</div>
-        <div className="sm:col-span-2 sm:row-span-2 sm:col-start-4 sm:row-start-1">4</div>
+
+        <div className="p-4 w-full bg-slate-100 rounded-xl sm:col-span-2">
+          <GithubCard />
+        </div>
+
+        <div className="p-4 w-full bg-slate-100 rounded-xl sm:row-span-2 sm:col-span-2">
+          prueba
+        </div>
       </div>
     </div>
   );
