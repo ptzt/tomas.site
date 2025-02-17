@@ -4,7 +4,7 @@ import { VscTwitter, VscCopy } from "react-icons/vsc";
 
 export default function ProfileCard() {
   return (
-    <div className="p-4 bg-slate-50 text-slate-950 h-full  shadow-md">
+    <div className="p-4 bg-slate-50 text-slate-950   shadow-md">
       {/* Header */}
       <header className="flex justify-between items-center text-xl mb-4">
         <h2 className="font-semibold">About me</h2>

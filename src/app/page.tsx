@@ -1,21 +1,19 @@
 import ProfileCard from "@/components/ProfileCard";
 import GithubCard from "@/components/GithubCard";
+import MapCard from "@/components/MapCard";
+import LeetCodeCard from "@/components/LeetcodeCard";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center font-[family-name:var(--font-geist-sans)] px-4 py-4">
-      <div className="flex flex-col gap-4 w-full sm:grid sm:grid-rows-3 sm:grid-flow-col">
-        <div className="p-4 w-full bg-slate-100 rounded-xl sm:row-span-3">
+    <div className="min-h-screen flex items-center justify-center px-4 py-4 ">
+      <div className="grid grid-cols-4 grid-rows-3 gap-4">
+        <div className="col-span-2 row-span-3 col-start-1 bg-slate-100 rounded-xl w-full p-4">
           <ProfileCard />
         </div>
-
-        <div className="p-4 w-full bg-slate-100 rounded-xl sm:col-span-2">
-          <GithubCard />
-        </div>
-
-        <div className="p-4 w-full bg-slate-100 rounded-xl sm:row-span-2 sm:col-span-2">
-          prueba
-        </div>
+        <div className="col-span-2 col-start-3 bg-slate-100 rounded-xl w-full p-4"><GithubCard /></div>
+        <div className="row-span-2 col-start-3 row-start-2 bg-slate-100 rounded-xl w-full p-4"><MapCard /></div>
+        <div className="col-start-4 row-start-2 bg-slate-100 rounded-xl w-full p-4"><LeetCodeCard /></div>
+        <div className="col-start-4 row-start-3">Spofify card?</div>
       </div>
     </div>
   );
