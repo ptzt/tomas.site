@@ -1,9 +1,13 @@
+"use client"
 import ProfileCard from "@/components/ProfileCard";
 import GithubCard from "@/components/GithubCard";
-import MapCard from "@/components/MapCard";
 import LeetCodeCard from "@/components/LeetcodeCard";
+import dynamic from "next/dynamic";
+
+const MapCard = dynamic(() => import("@/components/MapCard"), { ssr: false });
 
 export default function Home() {
+
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-4 ">
       <div className="grid grid-cols-4 grid-rows-3 gap-4">
