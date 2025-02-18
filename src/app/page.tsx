@@ -4,6 +4,7 @@ import GithubCard from "@/components/GithubCard";
 import LeetCodeCard from "@/components/LeetcodeCard";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import SpotifyCard from "@/components/SpotifyCard";
 const MapCard = dynamic(() => import("@/components/MapCard"), { ssr: false });
 
 export default function Home() {
@@ -50,7 +51,7 @@ export default function Home() {
           whileTap={{ scale: 0.8 }}
           className="bg-slate-100 rounded-xl w-full p-4 lg:col-start-4 lg:row-start-3"
         >
-          <p>Spotify Card?</p>
+          <SpotifyCard />
         </motion.div>
       </div>
     </div>
