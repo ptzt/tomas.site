@@ -1,8 +1,10 @@
 "use client"
 import GitHubCalendar from "react-github-calendar";
 import { VscGithub } from "react-icons/vsc";
-export default function GithubCard() {
 
+
+
+export default function GithubCard() {
   return (
     <div className="flex  bg-slate-50 text-slate-950 p-6 m-auto rounded-lg shadow-md  max-w-full">
       <div className="w-full  ">
@@ -20,6 +22,5 @@ export default function GithubCard() {
         />
       </div>
     </div>
-
   )
 }

@@ -12,6 +12,7 @@
     "@react-icons/all-files": "^4.1.0",
     "lucide-react": "^0.475.0",
     "mapkit-react": "^1.15.3",
+    "motion": "^12.4.3",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-circular-progressbar": "^2.1.0",

@@ -3,7 +3,7 @@ import ProfileCard from "@/components/ProfileCard";
 import GithubCard from "@/components/GithubCard";
 import LeetCodeCard from "@/components/LeetcodeCard";
 import dynamic from "next/dynamic";
-
+import { motion } from "framer-motion";
 const MapCard = dynamic(() => import("@/components/MapCard"), { ssr: false });
 
 export default function Home() {
@@ -18,24 +18,40 @@ export default function Home() {
         </div>
 
         {/* GitHub Card */}
-        <div className="bg-slate-100 rounded-xl w-full p-4 lg:col-span-2 lg:col-start-3">
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.8 }}
+          className="bg-slate-100 rounded-xl w-full p-4 lg:col-span-2 lg:col-start-3"
+        >
           <GithubCard />
-        </div>
+        </motion.div>
 
         {/* Map Card */}
-        <div className="bg-slate-100 rounded-xl w-full p-4 lg:row-span-2 lg:col-start-3 lg:row-start-2">
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.8 }}
+          className="bg-slate-100 rounded-xl w-full p-4 lg:row-span-2 lg:col-start-3 lg:row-start-2"
+        >
           <MapCard />
-        </div>
+        </motion.div>
 
         {/* LeetCode Card */}
-        <div className="bg-slate-100 rounded-xl w-full p-4 lg:col-start-4 lg:row-start-2">
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.8 }}
+          className="bg-slate-100 rounded-xl w-full p-4 lg:col-start-4 lg:row-start-2"
+        >
           <LeetCodeCard />
-        </div>
+        </motion.div>
 
         {/* Spotify Card */}
-        <div className="bg-slate-100 rounded-xl w-full p-4 lg:col-start-4 lg:row-start-3">
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.8 }}
+          className="bg-slate-100 rounded-xl w-full p-4 lg:col-start-4 lg:row-start-3"
+        >
           <p>Spotify Card?</p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
