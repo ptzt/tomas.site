@@ -21,7 +21,6 @@ export default function Home() {
         {/* GitHub Card */}
         <motion.div
           whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.8 }}
           className="bg-slate-100 rounded-xl w-full p-4 lg:col-span-2 lg:col-start-3"
         >
           <GithubCard />
@@ -30,7 +29,6 @@ export default function Home() {
         {/* Map Card */}
         <motion.div
           whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.8 }}
           className="bg-slate-100 rounded-xl w-full p-4 lg:row-span-2 lg:col-start-3 lg:row-start-2"
         >
           <MapCard />
@@ -39,7 +37,6 @@ export default function Home() {
         {/* LeetCode Card */}
         <motion.div
           whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.8 }}
           className="bg-slate-100 rounded-xl w-full p-4 lg:col-start-4 lg:row-start-2"
         >
           <LeetCodeCard />
@@ -48,7 +45,6 @@ export default function Home() {
         {/* Spotify Card */}
         <motion.div
           whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.8 }}
           className="bg-slate-100 rounded-xl w-full p-4 lg:col-start-4 lg:row-start-3"
         >
           <SpotifyCard />

@@ -57,23 +57,37 @@ export default function SpotifyCard() {
   }, []);
 
   return (
-    <div className="bg-slate-100 rounded-xl w-full h-full p-4">
-      <h2 className="text-black">Currently playing</h2>
-      <div className=" flex items-center gap-4">
-        {song ? (
-          <>
-            <Image src={song.albumImage} alt="Album Cover" className="rounded-lg" width={150} height={150} />
+    <div className="bg-slate-100 rounded-xl w-full h-full p-4 flex flex-col justify-center">
+      {song ? (
+        <>
+          <h2 className="text-lg font-semibold text-black mb-3">🎶 Currently Playing</h2>
+          <div className="flex items-center gap-4">
+            <a href={song.spotifyUrl} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={song.albumImage}
+                alt="Album Cover"
+                width={150}
+                height={150}
+                className="rounded-lg shadow-md transition-transform transform hover:scale-105"
+                priority
+              />
+            </a>
             <div>
-              <a href={song.spotifyUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-lg hover:underline text-black">
+              <a
+                href={song.spotifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-lg text-black hover:underline"
+              >
                 {song.name}
               </a>
-              <p className="text-sm text-gray-500">{song.artist}</p>
+              <p className="text-sm text-gray-700">{song.artist}</p>
             </div>
-          </>
-        ) : (
-          <p className="text-gray-500">🎵 Nada sonando</p>
-        )}
-      </div>
+          </div>
+        </>
+      ) : (
+        <p className="text-gray-500 text-center">🎵 Nada sonando</p>
+      )}
     </div>
   );
 }
