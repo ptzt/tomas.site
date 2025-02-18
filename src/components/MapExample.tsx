@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import { Map, Marker } from "mapkit-react";
 import { FaInstagram } from "react-icons/fa";
@@ -281,9 +282,6 @@ export default function MapExample() {
     </div>
   )
 }
-
-
-//<Marker latitude={46.20738751546706} longitude={6.155891756231} title="Jet d’eau" subtitle="Iconic landmark of Geneva"   calloutRightAccessory={<CustomCalloutRightAccessory url="https://en.wikipedia.org/wiki/Jet_d%27Eau" />} calloutEnabled />
 
 
 
