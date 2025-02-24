@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
+
 "use client"
-import { Map, Marker } from "mapkit-react";
-import { FaInstagram } from "react-icons/fa";
+import { ColorScheme, Map, Marker } from "mapkit-react";
 export default function MapExample() {
   const token: string = process.env.NEXT_PUBLIC_MAP_TOKEN || "";
   const data = [
@@ -222,42 +221,8 @@ export default function MapExample() {
     latitudeDelta: 0.12,
     longitudeDelta: 0.12
   }
+  // const [selected, setSelected]: any = useState(false);
 
-
-  function CustomCalloutContent({
-    title,
-    subtitle,
-  }: {
-    title: string;
-    subtitle: string;
-  }) {
-    return (
-      <div className="flex flex-col  text-black ">
-        <h2 className="text-lg font-semibold m-0">{title ?? ''}</h2>
-        <p>{subtitle ?? ''}</p>
-      </div>
-    );
-  }
-
-
-  function CustomCalloutLeftAccessory({ src }: { src: string }) {
-    return (
-      <div className="w-11 h-11">
-        <img src={src} alt="Café logo" />
-      </div>
-    );
-  }
-
-
-  function CustomCalloutRightAccessory({ url }: { url: string }) {
-    return (
-      <div className="text-black p-1">
-        <a href={`https://www.instagram.com/${url}/`} target="_blank" rel="noreferrer" aria-label="Learn more">
-          <FaInstagram size={25} />
-        </a>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full h-screen" >
@@ -265,19 +230,26 @@ export default function MapExample() {
       <Map
         token={token}
         initialRegion={initialRegion}
+        colorScheme={ColorScheme.Dark}
       >
-        {data.map((place) => (
-          <Marker
-            key={place.id}
-            latitude={place.latitude}
-            longitude={place.longitude}
-            title={place.name}
-            subtitle={place.address}
-            calloutLeftAccessory={<CustomCalloutLeftAccessory src={`https://nyc3.digitaloceanspaces.com/betzerra/${place.thumbnail}`} />}
-            calloutContent={<CustomCalloutContent title={place.name} subtitle={place.address} />}
-            calloutRightAccessory={<CustomCalloutRightAccessory url={place.instagram} />}
-          />
-        ))}
+        {data.map((place) => {
+          const initials = place.name.slice(0, 2).toUpperCase();
+
+          return (
+
+            <Marker
+              key={place.id}
+              latitude={place.latitude}
+              longitude={place.longitude}
+              title={place.name}
+              subtitle={place.address}
+              // onSelect={() => setSelected(place.id)}
+              // onDeselect={() => setSelected(null)}
+              glyphText={initials}
+              glyphColor={'black'}
+            />
+          )
+        })}
       </Map>
     </div>
   )
