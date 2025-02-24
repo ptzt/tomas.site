@@ -1,6 +1,9 @@
 
 "use client"
 import { ColorScheme, Map, Marker } from "mapkit-react";
+import { useState } from "react";
+import Image from "next/image";
+
 export default function MapExample() {
   const token: string = process.env.NEXT_PUBLIC_MAP_TOKEN || "";
   const data = [
@@ -221,20 +224,22 @@ export default function MapExample() {
     latitudeDelta: 0.12,
     longitudeDelta: 0.12
   }
-  // const [selected, setSelected]: any = useState(false);
+  const [selected, setSelected]: any = useState(false);
 
 
   return (
-    <div className="w-full h-screen" >
-
+    <div className="w-full h-screen " >
       <Map
         token={token}
         initialRegion={initialRegion}
         colorScheme={ColorScheme.Dark}
+        showsZoomControl={false}
+        showsCompass={0}
+        showsMapTypeControl={false}
+        allowWheelToZoom={true}
       >
         {data.map((place) => {
           const initials = place.name.slice(0, 2).toUpperCase();
-
           return (
 
             <Marker
@@ -243,14 +248,31 @@ export default function MapExample() {
               longitude={place.longitude}
               title={place.name}
               subtitle={place.address}
-              // onSelect={() => setSelected(place.id)}
-              // onDeselect={() => setSelected(null)}
+              onSelect={() => setSelected(place)}
+              onDeselect={() => setSelected(null)}
               glyphText={initials}
               glyphColor={'black'}
             />
           )
         })}
       </Map>
+      {selected && (
+        <div className="absolute bottom-2 left-0 right-0 mx-2">
+          <div className="bg-gray-800 w-full p-2 rounded-lg flex items-center justify-start space-x-4">
+            <Image
+              src={`https://nyc3.digitaloceanspaces.com/betzerra/${selected.thumbnail}`}
+              width={60}
+              height={60}
+              alt="Coffee icon"
+              className="rounded-lg"
+            />
+            <div className="text-white">
+              <h1 className="text-base md:text-lg">{selected.name}</h1>
+              <p className="text-sm md:text-base">{selected.address}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
