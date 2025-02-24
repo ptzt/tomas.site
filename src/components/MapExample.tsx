@@ -3,6 +3,10 @@
 import { ColorScheme, Map, Marker } from "mapkit-react";
 import { useState } from "react";
 import Image from "next/image";
+import { IoIosArrowForward } from "react-icons/io";
+import { CgLoadbar } from "react-icons/cg";
+import { FaCarRear } from "react-icons/fa6";
+import { SiInstagram } from "react-icons/si";
 
 export default function MapExample() {
   const token: string = process.env.NEXT_PUBLIC_MAP_TOKEN || "";
@@ -224,8 +228,13 @@ export default function MapExample() {
     latitudeDelta: 0.12,
     longitudeDelta: 0.12
   }
-  const [selected, setSelected]: any = useState(false);
+  const [selected, setSelected] = useState<any>(null);
+  const [showInfo, setShowInfo] = useState(false);
 
+  const onDeselect = () => {
+    setSelected(null)
+    setShowInfo(false)
+  }
 
   return (
     <div className="w-full h-screen " >
@@ -241,7 +250,6 @@ export default function MapExample() {
         {data.map((place) => {
           const initials = place.name.slice(0, 2).toUpperCase();
           return (
-
             <Marker
               key={place.id}
               latitude={place.latitude}
@@ -249,30 +257,92 @@ export default function MapExample() {
               title={place.name}
               subtitle={place.address}
               onSelect={() => setSelected(place)}
-              onDeselect={() => setSelected(null)}
+              onDeselect={() => onDeselect()}
               glyphText={initials}
               glyphColor={'black'}
             />
           )
         })}
       </Map>
+
+      {/* Overlay that darkens the background */}
+      {showInfo && (
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+      )}
+
       {selected && (
         <div className="absolute bottom-2 left-0 right-0 mx-2">
-          <div className="bg-gray-800 w-full p-2 rounded-lg flex items-center justify-start space-x-4">
-            <Image
-              src={`https://nyc3.digitaloceanspaces.com/betzerra/${selected.thumbnail}`}
-              width={60}
-              height={60}
-              alt="Coffee icon"
-              className="rounded-lg"
+          <div className=" w-full p-2 rounded-lg flex items-center justify-between space-x-4" style={{
+            background: 'linear-gradient(134deg, #2f3336, #565c61)'
+          }}>
+            <section className="flex items-center gap-x-2">
+              <Image
+                src={`https://nyc3.digitaloceanspaces.com/betzerra/${selected.thumbnail}`}
+                width={60}
+                height={60}
+                alt="Coffee icon"
+                className="rounded-lg"
+              />
+              <div className="text-white">
+                <h1 className="text-base md:text-lg">{selected.name}</h1>
+                <p className="text-sm md:text-base">{selected.address}</p>
+              </div>
+            </section>
+            <IoIosArrowForward
+              size={25}
+              onClick={() => setShowInfo(prevState => !prevState)}
+              className="cursor-pointer"
             />
-            <div className="text-white">
+          </div>
+        </div>
+      )}
+
+      {showInfo && selected && (
+        <div className="absolute bottom-2 mx-2 left-0 right-0 z-20">
+          <div className=" w-full md:w-11/12 lg:w-1/2 xl:w-1/3 px-5 rounded-lg mx-auto flex flex-col items-center"
+            style={{ background: '#1e2224' }}
+          >
+            <CgLoadbar
+              size={35}
+              className="cursor-pointer"
+              onClick={() => setShowInfo(false)}
+            />
+            <div className="w-full flex items-center gap-x-2 my-5">
+              <Image
+                src={`https://nyc3.digitaloceanspaces.com/betzerra/${selected.thumbnail}`}
+                width={60}
+                height={60}
+                alt="Coffee icon"
+                className="rounded-lg"
+              />
               <h1 className="text-base md:text-lg">{selected.name}</h1>
+            </div>
+
+            <div className="mb-5 w-full">
+              <button className="text-sm md:text-base font-bold">Address</button>
               <p className="text-sm md:text-base">{selected.address}</p>
+            </div>
+
+            <div className="flex gap-4 w-full justify-center mb-20 text-white">
+              <button
+                className="flex flex-col items-center bg-pinkSystem p-4 rounded-xl gap-y-1 hover:bg-opacity-80"
+                onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&destination=${selected.latitude},${selected.longitude}`, "_blank")}
+              >
+                <FaCarRear size={20} />
+                Directions
+              </button>
+              <button
+                className="flex flex-col items-center bg-gray-700 p-4 rounded-xl gap-y-1 hover:bg-opacity-80"
+                onClick={() => window.open(`https://www.instagram.com/${selected.instagram}/`, '_blank')}
+              >
+                <SiInstagram size={20} />
+                Instagram
+              </button>
             </div>
           </div>
         </div>
       )}
+
     </div>
   )
 }

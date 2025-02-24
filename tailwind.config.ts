@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        pinkSystem: '#FF2D55',
       },
     },
   },
